@@ -24,7 +24,7 @@ move_uploaded_file($tmp_edu,$target2);
 
 $working_place = $_POST["working_place"];
 $rating = 0;
-
+$status = 'pending';
 $time_slot = $_POST["time_slot"];
 $gender = $_POST["gender"];
  $sql = "INSERT INTO expert (
@@ -41,7 +41,8 @@ $gender = $_POST["gender"];
   salary,
   time_slot,
   address,
-  rating
+  rating,
+  status
   )
   VALUES
   (
@@ -57,7 +58,8 @@ $gender = $_POST["gender"];
   $salary,
   '$time_slot',
   '$address',
-    $rating
+    $rating,
+    '$status'
   );";
 
 $result = mysqli_query($con,$sql);
@@ -103,7 +105,7 @@ else
   <div class="nav">
     <div class="navbar">
       <div class="navbar-start">
-        <a href="index.html" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
+      <a href="index.php" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
       </div>
     </div>
   </div>

@@ -55,7 +55,7 @@ if(isset($_POST["login"]))
     <div class="nav">
         <div class="navbar">
             <div class="navbar-start">
-                <a href="index.html" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
+            <a href="index.php" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
             </div>
         </div>
     </div>
