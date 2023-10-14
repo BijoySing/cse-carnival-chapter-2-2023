@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- </html>data-theme="light"> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar.css"> <!-- Include the navbar CSS -->
+    <link rel="icon" href="images/search-employee-8969.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" href="styles1.css"> -->
+    <title>Urban Workers</title>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div class="navbar">
+            <div class="navbar-start">
+                <a href="index.html" class="btn btn-ghost normal-case text-xl">Urban Workers</a>
+            </div>
+        </div>
+    </div>
+
+    <form method="POST" action=" php/signUpClient.php" enctype="multipart/form-data">
+    <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+        <div class="container max-w-screen-lg mx-auto">
+            <div>
+                <h2 class="font-bold text-4xl text-gray-900">Registration Form for Patients</h2>
+                <p class="text-gray-500 mb-6" </p>
+
+                <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                        <div class="text-gray-900">
+                            <p class="font-medium text-lg">Personal Details</p>
+                            <p>Please fill out all the fields.</p>
+                        </div>
+
+                        <div class="lg:col-span-2">
+                            <form action="">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <div class="md:col-span-5 font-semibold text-gray-600 mb-1">
+                                        <label for="full_name">Full Name</label>
+                                        <input type="text" name="full_name" id="full_name"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""required />
+                                    </div>
+
+                                    <div class="md:col-span-5 font-semibold text-gray-600 mb-1">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" name="email" id="email"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100" value=""
+                                            placeholder="" required/>
+                                    </div>
+
+
+                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Gendar </label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+                                    <div class="md:col-span-1 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Age </label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Marital Status</label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+                                    <div class="md:col-span-3 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Education</label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Profession</label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+                                    <div class="md:col-span-5 font-semibold text-gray-600 mb-1">
+                                        <label for="address">Address</label>
+                                        <input type="text" name="address" id="address"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="" required/>
+                                    </div>
+
+<!-- 
+                                    <div class="md:col-span-3 font-semibold text-gray-600 mb-1">
+                                        <label for="city">City name</label>
+                                        <select name="city" id="city"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100">
+                                            <option value="city1">City 1</option>
+                                            <option value="city2">City 2</option>
+                                            <option value="city3">City 3</option>
+                                           
+                                        </select>
+                                    </div>
+-->
+
+                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
+                                        <label for="num">Contact No.</label>
+                                        <input type="" name="contact" id="number"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
+                                            placeholder="+880" required/>
+                                    </div>
+
+                                    <div class="md:col-span-3 font-semibold text-gray-600 mb-1 password-input">
+                                        <label for="email">Password</label>
+                                        <div class="password-input-wrapper">
+                                          <input type="password" name="pass" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-100" value="" placeholder="" required/>
+                                          <button type="button" id="togglePassword" class="eye-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9S7 4 9 2s5 2 5 2M9 16s3 2 5 2 5-2 5-2M12 19s1.5-1 2.5-3" />
+                                            </svg>
+                                          </button>
+                                        </div>
+                                 
+                                </div>
+
+
+                                <div class="md:col-span-5 text-right">
+                                    <div class="inline-flex items-end">
+                                        <button
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                            
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+<style>
+    .password-input-wrapper {
+      position: relative;
+    }
+  
+    .eye-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+
+</body>
