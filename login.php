@@ -1,8 +1,37 @@
 <?php
-session_start(); // Start the session
+require "config.php";
+if(isset($_POST["login"]))
+{
+    $email = $_POST["email"];
+    $role = $_POST["role"];
+    $password = $_POST["pass"];
+    $sql = "SELECT * FROM $role where email = '$email'";
+    $result = mysqli_query($con,$sql);
+    $total = mysqli_num_rows($result);
+    #echo "Total user found ".$total;
+    $res = mysqli_fetch_assoc($result);
+    if($total>0)
+    {
+        
+        $accurate_pass = $res["password"];
+        if($accurate_pass==$password)
+        {
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Your existing code
+                $page = "view.php?email=".$email."&role=".$role;
+                header('Location:'.$page);
+           
+        }
+        else
+        {
+            echo "Hello ".$res["name"]." your password doesn't match";
+            #header('Location:login.php');
+        }
+    }
+    else
+    {
+        echo "No user found. Please sign up";
+    }
+    
 }
 ?>
 <!DOCTYPE html>
@@ -42,6 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="card flex-shrink-0 w-1/2 shadow-2xl bg-gray-300">
                 <div class="card-body">
                     <form action="" method="POST">
+                    <div class="md:col-span-2 font-bold text-gray-600 mb-1">
+                    <label for="gender">Account type</label>
+                    <select name="role" id="gender" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required>
+                      <option value="expert">Expert</option>
+                      <option value="patient">Patient</option>
+                    </select>
+                  </div>
                         <div class="form-control ">
                             <label class="label">
                                 <span class="label-text text-xl text-black-800">Email</span>
@@ -59,11 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </svg>
     </button>
   </div>
+
                             <div class="inline-flex items-end">
                                 <input type="submit" value="Submit" name="login" class="bg-blue-500 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             </div>
                         </div>
                     </form>
+
+                    <a href="Check.html">Sign Up</a>
+
                 </div>
             </div>
         </div>

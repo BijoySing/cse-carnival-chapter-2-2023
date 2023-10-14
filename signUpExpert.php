@@ -1,3 +1,83 @@
+<?php
+require "config.php";
+
+if(isset($_POST["submit"]))
+{
+  $name = $_POST["full_name"];
+$email = $_POST["email"];
+$address = $_POST["address"];
+$name = $_POST["full_name"];
+$expertise = $_POST["services"];
+$mobile = $_POST["contact"];
+$salary = $_POST["Honorarium"];
+$password = $_POST["pass"];
+$image = $_FILES["picture"]["name"];
+$tmp_image = $_FILES["picture"]["tmp_name"];
+$target = "expert_image/".$image;
+move_uploaded_file($tmp_image,$target);
+
+$experience = $_POST["work_experience"];
+$education = $_FILES["education"]["name"];
+$tmp_edu = $_FILES["education"]["tmp_name"];
+$target2 = "expert_certificates/".$education;
+move_uploaded_file($tmp_edu,$target2);
+
+$working_place = $_POST["working_place"];
+$rating = 0;
+
+$time_slot = $_POST["time_slot"];
+$gender = $_POST["gender"];
+ $sql = "INSERT INTO expert (
+  email,
+  mobile,
+  password,
+  name,
+  image,
+  gender,
+  education,
+  experience,
+  expertise,
+  working_place,
+  salary,
+  time_slot,
+  address,
+  rating
+  )
+  VALUES
+  (
+    '$email',
+  '$mobile',
+  '$password',
+  '$name','$image',
+  '$gender',
+  '$education',
+  '$experience',
+  '$expertise',
+  '$working_place',
+  $salary,
+  '$time_slot',
+  '$address',
+    $rating
+  );";
+
+$result = mysqli_query($con,$sql);
+header('Location:login.php');
+/*
+if($result)
+{
+  echo "Inserted successfully";
+}
+else
+{
+  echo "Insertion failed";
+}
+
+*/
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +108,7 @@
     </div>
   </div>
 
-  <form method="POST" action="php/signupWorker.php" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data">
     <div class="min-h-screen text-black-900 p-6 bg-gray-100 flex items-center justify-center">
       <div class="container max-w-screen-lg mx-auto">
         <div>
@@ -63,6 +143,24 @@
                     <input type="text" name="address" id="address"
                       class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
                   </div>
+                  <div class="md:col-span-5 font-bold text-gray-600 mb-1">
+                    <label for="address">Present work place</label>
+                    <input type="text" name="working_place" id="address"
+                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
+                  </div>
+                  
+                  <div class="md:col-span-3 font-bold text-gray-700 mb-1">
+                    <label for="">Time Slot</label>
+                    <input type="time" name="time_slot" id="time_slot"
+                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
+                  </div><div class="md:col-span-2 font-bold text-gray-600 mb-1">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+              
 
 
                   <!-- <div class="md:col-span-3 font-bold text-gray-600 mb-1">
@@ -81,26 +179,27 @@
                     <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
                       
                       <select name="services" class="h-10 border mt-1 text-large font-bold rounded px-4 py-2 w-full bg-gray-100">
-                        <option class="ser" value="Home Tutor">Depression</option>
-                        <option class="ser" value="Health Care">Relational Issues</option>
-                        <option class="ser" value="Car Services">Marital Conflict/Issues                        </option>
-                        <option class="ser" value="Laundry Services">Parental Issues
+                        
+                        <option class="ser" value="Any kind">Any kind</option>
+                        <option class="ser" value="depression">Depression</option>
+                        <option class="ser" value="relational issues">Relational Issues</option>
+                        <option class="ser" value="marital conflict">Marital Conflict/Issues                        </option>
+                        <option class="ser" value="Parental issues">Parental Issues
                         </option>
 
-                        <option class="ser" value="AC Servicing">Anxiety
+                        <option class="ser" value="Anxiety">Anxiety
                         </option>
-                        <option class="ser" value="Painting Servicing">Stress Disorder
+                        <option class="ser" value="Stress Disorder">Stress Disorder
                         </option>
-                        <option class="ser" value="Home cleaning">Personality Disorder
+                        <option class="ser" value="Personality disorder">Personality Disorder
                         </option> 
-                        <option class="ser" value="Plumbing Services">Others</option>
 
                       </select>
                     </div>
                   </div>
                   <div class="md:col-span-2 font-bold text-gray-600 mb-1">
                     <label for="num">Contact No.</label>
-                    <input type="" name="contact" id="number" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                    <input type="text" name="contact" id="number" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                       value="" placeholder="+880" required/>
                   </div>
                   <div class="md:col-span-3 font-bold text-gray-600 mb-1">
@@ -136,6 +235,13 @@
                 <input type="file" name="picture" id="picture" class="mt-2">
 
             </div>
+
+            <div class="md:col-span-2 font-bold  border-gray-300 text-gray-600 text-center mt-2">
+                <label for="picture">Add Educational Certificates (pdf)</label>
+                <br>
+                <input type="file" name="education" id="picture" class="mt-2">
+
+            </div>
             <!-- <div class="md:col-span-5 font-bold text-gray-600">
               <label for="button">client request</label>
               <input type="button" name="send_request" class="mt-1">
@@ -145,7 +251,7 @@
 
               <div class="md:col-span-5 text-right">
                 <div class="inline-flex items-end">
-                  <input type="submit" value="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <input type="submit" name="submit"value="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   
                  
 

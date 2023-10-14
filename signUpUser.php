@@ -1,3 +1,37 @@
+<?php
+require "config.php";
+if(isset($_POST["submit"]))
+{
+    $name = $_POST["full_name"];
+$email = $_POST["email"];
+$address = $_POST["address"];
+$name = $_POST["full_name"];
+$mobile = $_POST["contact"];
+$password = $_POST["pass"];
+$gender = $_POST["gender"];
+$marital_status= $_POST["marital_status"];
+$education = $_POST["education"];
+
+$profession = $_POST["profession"];
+
+$age = $_POST["age"];
+
+$sql = "INSERT INTO patient(email,name,mobile,password,age,gender,marital_status,education,profession,address)VALUES('$email','$name','$mobile','$password',age,'$gender','$marital_status','$education','$profession','$address')";
+
+$result = mysqli_query($con,$sql);
+header('Location:login.php');
+/*
+if($result)
+{
+  echo "Inserted successfully";
+}
+else
+{
+  echo "Insertion failed";
+}
+*/
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +49,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- <link rel="stylesheet" href="styles1.css"> -->
-    <title>Urban Workers</title>
+    <title>Heart Heal</title>
 </head>
 
 <body>
@@ -28,7 +62,7 @@
         </div>
     </div>
 
-    <form method="POST" action=" php/signUpClient.php" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
     <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
             <div>
@@ -59,33 +93,37 @@
                                     </div>
 
 
-                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
-                                        <label for="address">Gendar </label>
-                                        <input type="text" name="address" id="address"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
-                                            placeholder="" required/>
-                                    </div>
+                                    <div class="md:col-span-2 font-bold text-gray-600 mb-1">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
                                     <div class="md:col-span-1 font-semibold text-gray-600 mb-1">
                                         <label for="address">Age </label>
-                                        <input type="text" name="address" id="address"
+                                        <input type="int" name="age" id="address"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
                                             placeholder="" required/>
                                     </div>
-                                    <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
-                                        <label for="address">Marital Status</label>
-                                        <input type="text" name="address" id="address"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
-                                            placeholder="" required/>
-                                    </div>
+                                    <div class="md:col-span-2 font-bold text-gray-600 mb-1">
+                    <label for="gender">Marital Status</label>
+                    <select name="marital_status" id="gender" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required>
+                      <option value="Married">Married</option>
+                      <option value="Unmarried">Unmarried</option>
+                      <option value="Divorced">Divorced</option>
+                      
+                    </select>
+                  </div>
                                     <div class="md:col-span-3 font-semibold text-gray-600 mb-1">
                                         <label for="address">Education</label>
-                                        <input type="text" name="address" id="address"
+                                        <input type="text" name="education" id="address"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
                                             placeholder="" required/>
                                     </div>
                                     <div class="md:col-span-2 font-semibold text-gray-600 mb-1">
                                         <label for="address">Profession</label>
-                                        <input type="text" name="address" id="address"
+                                        <input type="text" name="profession" id="address"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
                                             placeholder="" required/>
                                     </div>
@@ -133,8 +171,8 @@
 
                                 <div class="md:col-span-5 text-right">
                                     <div class="inline-flex items-end">
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                        <input type="submit"name="submit"value="Submit"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                             
                                     </div>
                                 </div>
@@ -166,5 +204,4 @@
       cursor: pointer;
     }
   </style>
-
-</body>
+</body></html>
