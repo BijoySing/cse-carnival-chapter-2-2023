@@ -16,7 +16,7 @@ $profession = $_POST["profession"];
 
 $age = $_POST["age"];
 
-$sql = "INSERT INTO patient(email,name,mobile,password,age,gender,marital_status,education,profession,address)VALUES('$email','$name','$mobile','$password',age,'$gender','$marital_status','$education','$profession','$address')";
+$sql = "INSERT INTO patient(email,name,mobile,password,age,gender,marital_status,education,profession,address)VALUES('$email','$name','$mobile','$password',$age,'$gender','$marital_status','$education','$profession','$address')";
 
 $result = mysqli_query($con,$sql);
 header('Location:login.php');
@@ -57,7 +57,7 @@ else
     <div class="nav">
         <div class="navbar">
             <div class="navbar-start">
-            <a href="index.php" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
+                <a href="index.php" class="btn btn-ghost normal-case text-xl">Heart Heal</a>
             </div>
         </div>
     </div>

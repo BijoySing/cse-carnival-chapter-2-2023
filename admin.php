@@ -1,15 +1,23 @@
 <?php
 require 'config.php';
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="CSS/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.4.0/dist/full.css" rel="stylesheet" type="text/css" />    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+
 </head>
-<body>
+<body >
+<div class="flex flex-row justify-between">
+     <h1 class="font-bold text-4xl text-center mb-4 mt-4">Admin Dashboard</h1>
+    <button><a  class="btn btn-lg btn-primary" href="login.php">Logout</a></button>
+   </div>
     <?php
     $sql1 = "SELECT * FROM expert where status='pending'";
     $sql2 = "SELECT * FROM expert where status='VERIFIED'";
@@ -42,7 +50,7 @@ require 'config.php';
         echo "<td><img src='expert_image/$row[image]'width='50px'height='50px'>"."</td>";
         $status = "<form action='verification.php'method='post'>
         <input type='hidden'name='email'value='$row[email]'>
-        <input type='submit'name='submit'value='VERIFY'>
+        <input class='btn btn-primary' type='submit'name='submit'value='VERIFY'>
         </form>";
        
     echo "<th>".$row['name']."</td>";
@@ -135,16 +143,16 @@ require 'config.php';
         <input type='hidden'name='payment_id'value='$row[payment_id]'>
         <input type='hidden'name='payment_date'value='$row[payment_date]'>
         
-        <input type='submit'name='submit'value='VERIFY'>
+        <input class='btn btn primary bg-green-600' type='submit'name='submit'value='VERIFY'>
         </form>";
        
        
     echo "<th>".$row['patient_name']."</td>";
-    echo "<th>".$row['patient_mobile']."</td>";
     echo "<th>".$row['patient_email']."</td>";
+    echo "<th>".$row['patient_mobile']."</td>";
     echo "<th>".$row['expert_name']."</td>";
-    echo "<th>".$row['expert_mobile']."</td>";
     echo "<th>".$row['expert_email']."</td>";
+    echo "<th>".$row['expert_mobile']."</td>";
     echo "<th>".$row['payment_method']."</td>";
     echo "<th>".$row['fee']."</td>";
     echo "<th>".$row['payment_id']."</td>";
@@ -179,11 +187,11 @@ require 'config.php';
         echo "<tr>";
         
     echo "<th>".$row['patient_name']."</td>";
-    echo "<th>".$row['patient_mobile']."</td>";
     echo "<th>".$row['patient_email']."</td>";
+    echo "<th>".$row['patient_mobile']."</td>";
     echo "<th>".$row['expert_name']."</td>";
-    echo "<th>".$row['expert_mobile']."</td>";
     echo "<th>".$row['expert_email']."</td>";
+    echo "<th>".$row['expert_mobile']."</td>";
     echo "<th>".$row['payment_method']."</td>";
     echo "<th>".$row['fee']."</td>";
     echo "<th>".$row['payment_id']."</td>";

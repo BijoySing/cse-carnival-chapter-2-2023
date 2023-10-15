@@ -1,14 +1,18 @@
 <?php
+error_reporting(0);
 require "config.php";
 if(isset($_POST["login"]))
 {
+    $role = $_POST["role"];    
+    
     $email = $_POST["email"];
-    $role = $_POST["role"];
+    
     $password = $_POST["pass"];
     $sql = "SELECT * FROM $role where email = '$email'";
     $result = mysqli_query($con,$sql);
     $total = mysqli_num_rows($result);
     #echo "Total user found ".$total;
+
     $res = mysqli_fetch_assoc($result);
     if($total>0)
     {
@@ -16,6 +20,7 @@ if(isset($_POST["login"]))
         $accurate_pass = $res["password"];
         if($accurate_pass==$password)
         {
+            echo '<script>alert("Login Successfully");</script>';
 
                 $page = "view.php?email=".$email."&role=".$role;
                 header('Location:'.$page);
@@ -29,7 +34,7 @@ if(isset($_POST["login"]))
     }
     else
     {
-        echo "No user found. Please sign up";
+        echo '<script>alert("No User found");</script>';
     }
     
 }
@@ -46,6 +51,7 @@ if(isset($_POST["login"]))
     <link rel="icon" href="images/search-employee-8969.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="CSS/view.css">
     <!-- <link rel="stylesheet" href="styles1.css"> -->
     <title>Heart Heal</title>
 </head>
@@ -76,6 +82,8 @@ if(isset($_POST["login"]))
                     <select name="role" id="gender" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required>
                       <option value="expert">Expert</option>
                       <option value="patient">Patient</option>
+                      
+                      
                     </select>
                   </div>
                         <div class="form-control ">
@@ -96,13 +104,16 @@ if(isset($_POST["login"]))
     </button>
   </div>
 
-                            <div class="inline-flex items-end">
+                            <div class=" flex  items-center justify-between">
                                 <input type="submit" value="Submit" name="login" class="bg-blue-500 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button class="bg-blue-900 p-2 rounded-lg mt-2 text-white" ><a href="admin_verify.php">Admin</a></button>
+                                <button class="bg-blue-600 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">  <a  href="Check.html">Sign Up</a></button>
+
                             </div>
+
                         </div>
                     </form>
 
-                    <a href="Check.html">Sign Up</a>
 
                 </div>
             </div>
